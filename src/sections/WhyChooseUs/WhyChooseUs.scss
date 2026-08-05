@@ -1,0 +1,50 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.why {
+  background: v.$stone;
+  @include m.section-pad;
+}
+
+.why__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-3;
+
+  @include m.respond(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.respond(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.why-card {
+  background: v.$white;
+  border: 1px solid v.$stone-dim;
+  border-radius: v.$radius;
+  padding: v.$space-3;
+
+  &__check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(184, 69, 47, 0.12);
+    color: v.$rhododendron;
+    font-weight: 600;
+    margin-bottom: v.$space-2;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.92rem;
+  }
+}

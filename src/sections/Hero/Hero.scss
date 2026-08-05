@@ -1,0 +1,105 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: v.$stone;
+
+  &__slider {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  &__slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.6s ease-in-out;
+
+    &.is-active {
+      opacity: 1;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(22, 35, 47, 0.42), rgba(22, 35, 47, 0.88));
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+  }
+
+  &__title {
+    color: v.$stone;
+    font-size: clamp(2rem, 5.5vw, 3.4rem);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin: 1rem 0 0.75rem;
+  }
+
+  &__sub {
+    font-family: v.$font-display;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    color: v.$glacier;
+    margin-bottom: 2.5rem;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &__dots {
+    position: absolute;
+    z-index: 1;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.6rem;
+
+    @include m.respond(md) {
+      left: auto;
+      right: v.$space-4;
+      transform: none;
+    }
+  }
+
+  &__dot {
+    width: 26px;
+    height: 3px;
+    border-radius: 2px;
+    border: none;
+    padding: 0;
+    background: rgba(237, 231, 221, 0.35);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &.is-active {
+      background: v.$marigold;
+    }
+  }
+}
+
+.btn-outline.white {
+  border-color: rgb(255, 255, 255);
+  color: #fff;
+
+  &:hover {
+    border-color: v.$stone;
+  }
+}

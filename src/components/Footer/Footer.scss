@@ -1,0 +1,86 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.footer {
+  background: v.$night-slate;
+  color: rgba(237, 231, 221, 0.75);
+  padding-block: v.$space-5 v.$space-3;
+}
+
+.footer__grid {
+  display: grid;
+  gap: v.$space-4;
+  grid-template-columns: 1fr;
+  padding-bottom: v.$space-4;
+  border-bottom: 1px solid rgba(143, 193, 217, 0.14);
+
+  @include m.respond(md) {
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  }
+}
+
+.footer__logo {
+  font-family: v.$font-display;
+  font-size: 1.2rem;
+  color: v.$stone;
+  margin-bottom: v.$space-1;
+
+  em {
+    font-style: italic;
+    color: v.$glacier;
+  }
+}
+
+.footer__tagline {
+  max-width: 32ch;
+  font-size: 0.92rem;
+}
+
+.footer__heading {
+  font-family: v.$font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: v.$marigold;
+  margin-bottom: v.$space-2;
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  font-size: 0.92rem;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    width: fit-content;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      color: v.$stone;
+      border-color: v.$glacier;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: v.$space-3;
+  font-family: v.$font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(143, 193, 217, 0.65);
+
+  @include m.respond(sm) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,52 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.reviews {
+  background: v.$white;
+  @include m.section-pad;
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-3;
+
+  @include m.respond(sm) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.review-card {
+  background: v.$stone;
+  border: 1px solid v.$stone-dim;
+  border-radius: v.$radius;
+  padding: v.$space-3;
+}
+
+.stars {
+  color: v.$marigold;
+  letter-spacing: 0.1em;
+
+  &--dim {
+    color: v.$stone-dim;
+  }
+}
+
+.review-card__quote {
+  font-family: v.$font-display;
+  font-style: italic;
+  font-size: 1rem;
+  margin: v.$space-2 0;
+  color: v.$ink;
+}
+
+.review-card__name {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.review-card__trip {
+  font-family: v.$font-mono;
+  font-size: 0.75rem;
+  color: v.$glacier-dim;
+}

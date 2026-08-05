@@ -1,0 +1,39 @@
+// ---- Color tokens -----------------------------------------------------
+// Named after the world the brand lives in: high-altitude sky, glacier ice,
+// rhododendron (Himachal & Uttarakhand's state flower), marigold prayer
+// flags, weathered stone, and pine forest.
+
+$night-slate:    #16232F; // dusk sky above the tree line, dark base
+$night-slate-2:  #1E3040; // slightly lighter panel on dark bg
+$glacier:        #8FC1D9; // ice-blue accent
+$glacier-dim:    #4E7F97;
+$rhododendron:   #B8452F; // CTA red — used sparingly
+$rhododendron-d: #8F3521;
+$marigold:       #E2A63D; // saffron / prayer-flag yellow
+$stone:          #EDE7DD; // warm paper background
+$stone-dim:      #DCD4C4;
+$pine:           #2B3D34; // deep green, body text on light bg
+$ink:            #101A22; // near-black, text on light bg (headlines)
+$white:          #FFFFFF;
+
+// ---- Type ---------------------------------------------------------------
+$font-display: 'Fraunces', 'Georgia', serif;
+$font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-mono:    'IBM Plex Mono', 'Courier New', monospace;
+
+// ---- Spacing scale --------------------------------------------------------
+$space-1: 0.5rem;
+$space-2: 1rem;
+$space-3: 1.5rem;
+$space-4: 2.5rem;
+$space-5: 4rem;
+$space-6: 6.5rem;
+
+// ---- Layout ---------------------------------------------------------------
+$container-max: 1180px;
+$radius: 4px;
+
+// ---- Breakpoints ------------------------------------------------------
+$bp-sm: 540px;
+$bp-md: 768px;
+$bp-lg: 1080px;
