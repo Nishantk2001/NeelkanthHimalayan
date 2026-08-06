@@ -28,20 +28,20 @@ export default function Footer() {
           <p className="footer__heading">Company</p>
           <a href="#contact">Contact</a>
           <a
-            href="https://wa.me/918628918266"
+            href="https://wa.me/919418428266"
             target="_blank"
             rel="noopener noreferrer"
           >
             WhatsApp
           </a>
-          <a href="tel:+918628918266">Call us</a>
+          <a href="tel:+919418428266">Call us</a>
         </div>
 
         <div className="footer__col">
           <p className="footer__heading">Base camp</p>
           <p>Mandi, Himachal Pradesh 175131</p>
-          <p>+91 86289 18266</p>
-          <p>neelkanthhimalayan@gmail.com</p>
+          <p>+91 94184 28266</p>
+          <p>neelkanthimalayan@gmail.com</p>
         </div>
       </div>
 

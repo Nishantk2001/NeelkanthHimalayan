@@ -1,6 +1,6 @@
 import './WhatsappButton.scss';
 
-const WHATSAPP_NUMBER = '918628918266';
+const WHATSAPP_NUMBER = '919418428266';
 const DEFAULT_MESSAGE = "Hi NeelKanth Himalayan, I'd like to know more about your tours.";
 
 export default function WhatsappButton() {

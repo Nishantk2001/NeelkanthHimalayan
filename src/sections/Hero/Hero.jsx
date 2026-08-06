@@ -8,7 +8,7 @@ const heroImages = [
   'https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=1920&auto=format&fit=crop', // Pine forest mountains
 ];
 
-const WHATSAPP_NUMBER = '918628918266';
+const WHATSAPP_NUMBER = '919418428266';
 const WHATSAPP_MESSAGE = "Hi NeelKanth Himalayan, I'd like to book a tour.";
 
 export default function Hero() {
@@ -38,7 +38,7 @@ export default function Hero() {
       </div>
 
       <div className="container hero__inner">
-        <p className="eyebrow">Himachal Pradesh, India</p>
+        <p className="eyebrow title">Himachal Pradesh, India</p>
         <h1 className="hero__title">NeelKanth <br/> Himalayan Travels</h1>
         <p className="hero__sub">Explore Himachal Like a Local</p>
         <div className="hero__actions">

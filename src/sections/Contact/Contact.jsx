@@ -47,12 +47,12 @@ export default function Contact() {
         </div>
 
         <div className="contact__quick">
-          <a href="tel:+918628918266" className="quick-card">
+          <a href="tel:+919418428266" className="quick-card">
             <span className="quick-card__label">Call</span>
-            <span className="quick-card__value">+91 86289 18266</span>
+            <span className="quick-card__value">+91 94184 28266</span>
           </a>
           <a
-            href="https://wa.me/918628918266"
+            href="https://wa.me/919418428266"
             target="_blank"
             rel="noopener noreferrer"
             className="quick-card"
@@ -60,9 +60,9 @@ export default function Contact() {
             <span className="quick-card__label">WhatsApp</span>
             <span className="quick-card__value">Chat with us</span>
           </a>
-          <a href="mailto:neelkanthhimalayan@gmail.com" className="quick-card">
+          <a href="mailto:neelkanthimalayan@gmail.com" className="quick-card">
             <span className="quick-card__label">Email</span>
-            <span className="quick-card__value">neelkanthhimalayan@gmail.com</span>
+            <span className="quick-card__value">neelkanthimalayan@gmail.com</span>
           </a>
         </div>
 

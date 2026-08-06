@@ -31,7 +31,7 @@ npm run preview
 
 ## Before you launch
 
-- Replace the WhatsApp number (`918628918266`) in `Hero.jsx`, `WhatsappButton.jsx`, `TaxiServices.jsx`, `Contact.jsx` and `Footer.jsx` with your real business number.
+- Replace the WhatsApp number (`919418428266`) in `Hero.jsx`, `WhatsappButton.jsx`, `TaxiServices.jsx`, `Contact.jsx` and `Footer.jsx` with your real business number.
 - Swap the Unsplash placeholder images (hero slider, package cards, gallery) for your own photography.
 - Update the Google Maps embed URL in `Contact.jsx` with your exact office location.
 - The contact form validates client-side only — wire `handleSubmit` in `Contact.jsx` to an email/CRM endpoint to make it functional.

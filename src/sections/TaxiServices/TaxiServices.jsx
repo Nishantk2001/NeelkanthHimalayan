@@ -23,7 +23,7 @@ export default function TaxiServices() {
               <p className="taxi-card__best">{v.best}</p>
               <p className="taxi-card__price">{v.price}</p>
               <a
-                href="https://wa.me/918628918266?text=Hi%2C%20I%27d%20like%20to%20book%20a%20taxi."
+                href="https://wa.me/919418428266?text=Hi%2C%20I%27d%20like%20to%20book%20a%20taxi."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-solid"
