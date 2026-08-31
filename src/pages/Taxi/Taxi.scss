@@ -1,0 +1,95 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section-head {
+  max-width: 46ch; margin-bottom: v.$space-4;
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: 0.5rem; }
+  &--dark h2 { color: v.$stone; }
+}
+
+.taxi-fleet { background: v.$stone; @include m.section-pad; }
+.taxi__grid {
+  display: grid; grid-template-columns: 1fr; gap: v.$space-3;
+  @include m.respond(sm) { grid-template-columns: repeat(2, 1fr); }
+  @include m.respond(lg) { grid-template-columns: repeat(4, 1fr); }
+}
+.taxi-card {
+  background: v.$white; border: 1px solid v.$stone-dim; border-radius: v.$radius; padding: v.$space-3;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  transition: transform 0.25s ease;
+  &:hover { transform: translateY(-4px); }
+  h3 { font-size: 1.2rem; }
+  &__seats { font-family: v.$font-mono; font-size: 0.78rem; color: v.$glacier-dim; }
+  &__best { font-size: 0.9rem; }
+  &__price { font-family: v.$font-mono; font-size: 1.1rem; color: v.$rhododendron; margin-top: 0.3rem; }
+  a { margin-top: auto; justify-content: center; }
+}
+
+// ---- Fare estimator ------------------------------------------------------
+.fare-estimator { background: v.$night-slate; color: rgba(237, 231, 221, 0.85); padding-block: v.$space-5; }
+.fare-estimator__inner {
+  display: grid; grid-template-columns: 1fr; gap: v.$space-4;
+  @include m.respond(lg) { grid-template-columns: 0.9fr 1.1fr; align-items: center; }
+}
+.fare-estimator__intro h2 { color: v.$stone; font-size: clamp(1.4rem, 3vw, 2rem); margin: 0.4rem 0 0.6rem; max-width: 20ch; }
+.fare-estimator__intro p { max-width: 42ch; }
+
+.fare-estimator__card {
+  background: v.$night-slate-2;
+  border: 1px solid rgba(143, 193, 217, 0.2);
+  border-radius: v.$radius;
+  padding: v.$space-4;
+  display: grid;
+  gap: v.$space-3;
+}
+.fare-estimator__field {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  label {
+    font-family: v.$font-mono; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;
+    color: v.$glacier;
+  }
+  select {
+    font-family: v.$font-body; font-size: 0.95rem; padding: 0.7rem 0.9rem;
+    border-radius: v.$radius; border: 1px solid rgba(143, 193, 217, 0.3);
+    background: v.$night-slate; color: v.$stone;
+  }
+  input[type='range'] {
+    accent-color: v.$marigold;
+    width: 100%;
+  }
+}
+.fare-estimator__km {
+  font-family: v.$font-mono; font-size: 0.85rem; color: v.$marigold;
+}
+.fare-estimator__result {
+  display: flex; align-items: baseline; justify-content: space-between;
+  border-top: 1px dashed rgba(143, 193, 217, 0.25);
+  padding-top: v.$space-2;
+}
+.fare-estimator__label { font-family: v.$font-mono; font-size: 0.78rem; color: rgba(237, 231, 221, 0.6); }
+.fare-estimator__amount { font-family: v.$font-mono; font-size: 1.6rem; color: v.$marigold; }
+.fare-estimator__amount--muted { font-size: 1.1rem; color: v.$glacier; }
+
+// ---- Steps ---------------------------------------------------------------
+.taxi-steps { background: v.$stone; @include m.section-pad; }
+.taxi-steps__grid {
+  display: grid; grid-template-columns: 1fr; gap: v.$space-3;
+  @include m.respond(sm) { grid-template-columns: repeat(3, 1fr); }
+}
+.taxi-step {
+  background: v.$white; border: 1px solid v.$stone-dim; border-radius: v.$radius; padding: v.$space-3;
+  &__num { font-family: v.$font-mono; color: v.$rhododendron; font-size: 1.1rem; }
+  h3 { font-size: 1.1rem; margin: 0.5rem 0; }
+  p { font-size: 0.92rem; }
+}
+
+// section-head--dark used on stone bg here (steps section), keep dark text override off:
+.taxi-steps .section-head--dark h2 { color: v.$ink; }
+
+.taxi-cta { background: v.$pine; color: v.$stone; }
+.taxi-cta__inner {
+  display: flex; flex-direction: column; gap: v.$space-3; align-items: flex-start;
+  padding-block: v.$space-4;
+  h2 { color: v.$stone; font-size: clamp(1.3rem, 3vw, 1.8rem); margin: 0.3rem 0; }
+  @include m.respond(md) { flex-direction: row; align-items: center; justify-content: space-between; }
+}

@@ -1,0 +1,40 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section-head {
+  max-width: 46ch; margin-bottom: v.$space-4;
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: 0.5rem; }
+}
+
+.tours-list { background: v.$stone; @include m.section-pad; }
+.tours-grid {
+  display: grid; grid-template-columns: 1fr; gap: v.$space-3;
+  @include m.respond(sm) { grid-template-columns: repeat(2, 1fr); }
+  @include m.respond(lg) { grid-template-columns: repeat(3, 1fr); }
+}
+.tour-card {
+  border: 1px solid v.$stone-dim; border-radius: v.$radius; overflow: hidden; background: v.$white;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  &:hover { transform: translateY(-5px); box-shadow: 0 14px 28px rgba(16, 26, 34, 0.1); }
+  &__img { height: 190px; background-size: cover; background-position: center; position: relative; }
+  &__tag {
+    position: absolute; top: 0.8rem; left: 0.8rem; background: v.$night-slate; color: v.$stone;
+    font-family: v.$font-mono; font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 0.3rem 0.7rem; border-radius: 999px;
+  }
+  &__body { padding: v.$space-3; }
+  &__head {
+    display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.6rem;
+    h3 { font-size: 1.2rem; }
+    span { font-family: v.$font-mono; font-size: 0.78rem; color: v.$glacier-dim; }
+  }
+  p { font-size: 0.92rem; margin-bottom: v.$space-2; }
+}
+
+.tours-cta { background: v.$night-slate; color: rgba(237, 231, 221, 0.85); }
+.tours-cta__inner {
+  display: flex; flex-direction: column; gap: v.$space-3; align-items: flex-start;
+  padding-block: v.$space-4;
+  h2 { color: v.$stone; font-size: clamp(1.3rem, 3vw, 1.8rem); margin: 0.3rem 0; max-width: 26ch; }
+  @include m.respond(md) { flex-direction: row; align-items: center; justify-content: space-between; }
+}

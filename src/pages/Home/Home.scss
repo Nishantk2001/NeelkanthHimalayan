@@ -1,0 +1,313 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+// ---- Hero (Wanderlust-style) ---------------------------------------------
+@keyframes hero-enter {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: v.$stone;
+  padding-top: 5rem;
+
+  &__slider { position: absolute; inset: 0; z-index: 0; }
+
+  &__slide {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: 0; transition: opacity 1.6s ease-in-out;
+    &.is-active { opacity: 1; }
+  }
+
+  &__overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(100deg, rgba(11, 17, 23, 0.92) 20%, rgba(11, 17, 23, 0.45) 60%, rgba(11, 17, 23, 0.25) 100%);
+  }
+
+  &__body {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: v.$space-4;
+    align-items: end;
+    padding-block: v.$space-5 v.$space-4;
+
+    @include m.respond(lg) {
+      grid-template-columns: 1.3fr 0.7fr;
+    }
+  }
+
+  &__enter { opacity: 0; animation: hero-enter 0.8s ease forwards; }
+
+  &__script {
+    font-family: v.$font-display;
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+    color: v.$marigold;
+    margin-bottom: 0.4rem;
+  }
+
+  &__title {
+    color: v.$stone;
+    font-family: v.$font-body;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.2rem;
+  }
+
+  &__sub {
+    max-width: 42ch;
+    font-size: 1.02rem;
+    color: rgba(237, 231, 221, 0.85);
+    margin-bottom: 1.8rem;
+  }
+
+  &__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.4rem; }
+
+  &__cta-solid {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: v.$rhododendron; color: v.$white;
+    font-family: v.$font-mono; font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 1rem 1.7rem; border-radius: v.$radius;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    &:hover { background: v.$rhododendron-d; transform: translateY(-1px); }
+  }
+
+  &__watch {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    color: v.$stone; font-family: v.$font-mono; font-size: 0.85rem; letter-spacing: 0.03em;
+    &:hover .hero__watch-icon { background: v.$marigold; color: v.$ink; }
+  }
+
+  &__watch-icon {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(237, 231, 221, 0.15);
+    border: 1px solid rgba(237, 231, 221, 0.4);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  // Floating feature card (bottom-right on desktop)
+  &__feature-card {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    background: v.$white;
+    border-radius: v.$radius;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(11, 17, 23, 0.35);
+    max-width: 320px;
+    justify-self: end;
+  }
+  &__feature-img {
+    width: 100px; flex-shrink: 0;
+    background-size: cover; background-position: center;
+  }
+  &__feature-body {
+    padding: 0.9rem 1rem;
+    display: flex; flex-direction: column; justify-content: center; gap: 0.15rem;
+    flex-grow: 1;
+  }
+  &__feature-name { font-family: v.$font-display; font-weight: 600; color: v.$ink; font-size: 1.05rem; }
+  &__feature-tag { font-size: 0.78rem; color: rgba(16, 26, 34, 0.6); }
+  &__feature-price { font-family: v.$font-mono; font-size: 0.85rem; color: v.$rhododendron; margin-top: 0.2rem; }
+  &__feature-arrow {
+    position: absolute; right: 0.7rem; bottom: 0.7rem;
+    display: flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: v.$marigold; color: v.$ink;
+  }
+
+  &__statbar {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(237, 231, 221, 0.15);
+    padding-block: v.$space-3;
+  }
+  &__statbar-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: v.$space-3;
+
+    @include m.respond(sm) { grid-template-columns: repeat(4, 1fr); }
+  }
+  &__stat {
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  &__stat-icon {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(226, 166, 61, 0.15); color: v.$marigold;
+  }
+  &__stat-value { font-weight: 600; font-size: 0.92rem; color: v.$stone; }
+  &__stat-sub { font-size: 0.78rem; color: rgba(237, 231, 221, 0.6); }
+
+  &__dots {
+    position: absolute; z-index: 1; top: 1.5rem; right: v.$space-4;
+    display: flex; gap: 0.6rem;
+  }
+  &__dot {
+    width: 22px; height: 3px; border-radius: 2px; border: none; padding: 0;
+    background: rgba(237, 231, 221, 0.35); cursor: pointer; transition: background-color 0.2s ease;
+    &.is-active { background: v.$marigold; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__enter { animation: none; opacity: 1; }
+}
+
+// ---- Section head -----------------------------------------------------
+.section-head {
+  max-width: 46ch;
+  margin-bottom: v.$space-4;
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: 0.5rem; }
+}
+
+// ---- Stats --------------------------------------------------------------
+.stats { background: v.$stone; padding-block: v.$space-4; }
+.stats__grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: v.$space-4;
+  @include m.respond(md) { grid-template-columns: repeat(4, 1fr); }
+}
+.stats__value { font-family: v.$font-mono; font-size: 1.7rem; color: v.$rhododendron; }
+.stats__label { font-size: 0.85rem; margin-top: 0.3rem; max-width: 22ch; }
+
+// ---- Why ------------------------------------------------------------------
+.why { background: v.$stone; @include m.section-pad; }
+.why__grid {
+  display: grid; grid-template-columns: 1fr; gap: v.$space-3;
+  @include m.respond(sm) { grid-template-columns: repeat(2, 1fr); }
+  @include m.respond(lg) { grid-template-columns: repeat(4, 1fr); }
+}
+.why-card {
+  background: v.$white; border: 1px solid v.$stone-dim; border-radius: v.$radius; padding: v.$space-3;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  &:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(16, 26, 34, 0.08); }
+  &__check {
+    display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px;
+    border-radius: 50%; background: rgba(184, 69, 47, 0.12); color: v.$rhododendron; font-weight: 600;
+    margin-bottom: v.$space-2;
+  }
+  h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+  p { font-size: 0.92rem; }
+}
+
+// ---- Packages -----------------------------------------------------------
+.packages { background: v.$white; @include m.section-pad; }
+.packages__grid {
+  display: grid; grid-template-columns: 1fr; gap: v.$space-3;
+  @include m.respond(sm) { grid-template-columns: repeat(2, 1fr); }
+  @include m.respond(lg) { grid-template-columns: repeat(3, 1fr); }
+}
+.package-card {
+  border: 1px solid v.$stone-dim; border-radius: v.$radius; overflow: hidden; background: v.$stone;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  &:hover { transform: translateY(-5px); box-shadow: 0 14px 28px rgba(16, 26, 34, 0.1); }
+  &__img { height: 180px; background-size: cover; background-position: center; position: relative; }
+  &__tag {
+    position: absolute; top: 0.8rem; left: 0.8rem; background: v.$night-slate; color: v.$stone;
+    font-family: v.$font-mono; font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 0.3rem 0.7rem; border-radius: 999px;
+  }
+  &__body { padding: v.$space-3; }
+  &__head {
+    display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.6rem;
+    h3 { font-size: 1.2rem; }
+    span { font-family: v.$font-mono; font-size: 0.78rem; color: v.$glacier-dim; }
+  }
+  p { font-size: 0.92rem; margin-bottom: v.$space-2; }
+}
+.packages__cta { margin-top: v.$space-4; text-align: center; }
+
+// ---- Taxi band ------------------------------------------------------------
+.taxi-band { background: v.$night-slate; color: rgba(237, 231, 221, 0.85); }
+.taxi-band__inner {
+  display: flex; flex-direction: column; gap: v.$space-3; align-items: flex-start;
+  padding-block: v.$space-4;
+  h2 { color: v.$stone; font-size: clamp(1.4rem, 3vw, 2rem); margin: 0.4rem 0; max-width: 24ch; }
+  p { max-width: 46ch; }
+  @include m.respond(md) { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+
+// ---- Gallery ------------------------------------------------------------
+.gallery { background: v.$stone; @include m.section-pad; }
+.gallery__grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: v.$space-2;
+  @include m.respond(sm) { grid-template-columns: repeat(3, 1fr); }
+}
+.gallery-item {
+  margin: 0; position: relative; border-radius: v.$radius; overflow: hidden; aspect-ratio: 4 / 3;
+  img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+  &:hover img { transform: scale(1.08); }
+  figcaption {
+    position: absolute; inset: auto 0 0 0;
+    background: linear-gradient(0deg, rgba(22, 35, 47, 0.85), transparent);
+    color: v.$stone; font-family: v.$font-mono; font-size: 0.72rem; padding: 1.5rem 0.75rem 0.6rem;
+  }
+}
+
+// ---- Reviews carousel ------------------------------------------------
+.reviews { background: v.$white; @include m.section-pad; }
+.review-carousel {
+  max-width: 640px; margin-inline: auto; text-align: center;
+  overflow: hidden;
+}
+.review-carousel__track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+.review-carousel__slide {
+  flex: 0 0 100%;
+  background: v.$stone;
+  border: 1px solid v.$stone-dim;
+  border-radius: v.$radius;
+  padding: v.$space-4;
+}
+.stars { color: v.$marigold; letter-spacing: 0.1em; font-size: 1.1rem; }
+.stars--dim { color: v.$stone-dim; }
+.review-carousel__quote {
+  font-family: v.$font-display; font-style: italic; font-size: 1.15rem; margin: v.$space-2 0; color: v.$ink;
+}
+.review-carousel__name { font-weight: 600; }
+.review-carousel__trip { font-family: v.$font-mono; font-size: 0.78rem; color: v.$glacier-dim; }
+.review-carousel__dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: v.$space-3; }
+.review-carousel__dot {
+  width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0;
+  background: v.$stone-dim; cursor: pointer;
+  &.is-active { background: v.$rhododendron; }
+}
+
+// ---- CTA band -----------------------------------------------------------
+.cta-band {
+  position: relative; overflow: hidden;
+  background: v.$pine; color: v.$stone; padding-block: v.$space-5;
+}
+.cta-band__blob {
+  position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.3;
+  animation: blob-float 10s ease-in-out infinite;
+  &--1 { width: 260px; height: 260px; background: v.$marigold; top: -60px; right: 10%; }
+  &--2 { width: 200px; height: 200px; background: v.$glacier; bottom: -60px; left: 8%; animation-delay: 3s; }
+}
+.cta-band__inner {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; gap: v.$space-3; align-items: flex-start;
+  h2 { color: v.$stone; font-size: clamp(1.4rem, 3vw, 2rem); margin: 0.3rem 0; }
+  @include m.respond(md) { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__blob, .cta-band__blob { animation: none; }
+}

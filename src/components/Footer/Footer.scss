@@ -2,9 +2,20 @@
 @use '../../styles/mixins' as m;
 
 .footer {
-  background: v.$night-slate;
+  position: relative;
+  background: linear-gradient(180deg, v.$night-slate 0%, #0E1720 100%);
   color: rgba(237, 231, 221, 0.75);
   padding-block: v.$space-5 v.$space-3;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, v.$rhododendron, v.$marigold, v.$glacier);
+  }
 }
 
 .footer__grid {
@@ -19,15 +30,9 @@
   }
 }
 
-.footer__logo {
-  font-family: v.$font-display;
-  font-size: 1.2rem;
-  color: v.$stone;
-  margin-bottom: v.$space-1;
-
-  em {
-    font-style: italic;
-    color: v.$glacier;
+.footer__brand {
+ .logo{
+    width:200px
   }
 }
 
@@ -67,6 +72,83 @@
   p {
     margin: 0;
   }
+}
+
+.footer__social {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+
+  a {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(226, 166, 61, 0.4);
+    color: v.$marigold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+
+    &:hover {
+      border-color: v.$marigold;
+      background: rgba(226, 166, 61, 0.12);
+      color: v.$stone;
+    }
+  }
+}
+
+.footer__sub-copy {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.footer__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  input {
+    font-family: v.$font-body;
+    font-size: 0.88rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: v.$radius;
+    border: 1px solid rgba(143, 193, 217, 0.25);
+    background: v.$night-slate-2;
+    color: v.$stone;
+
+    &::placeholder {
+      color: rgba(237, 231, 221, 0.5);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: v.$marigold;
+    }
+  }
+
+  button {
+    font-family: v.$font-mono;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: v.$marigold;
+    color: v.$ink;
+    border: none;
+    border-radius: v.$radius;
+    padding: 0.65rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: #d3993a;
+    }
+  }
+}
+
+.footer__subscribed {
+  font-size: 0.85rem;
+  color: v.$glacier;
 }
 
 .footer__bottom {

@@ -1,0 +1,118 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section-head {
+  max-width: 46ch; margin-bottom: v.$space-4;
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: 0.5rem; }
+  &--dark h2 { color: v.$stone; }
+}
+
+.service-grid-section { background: v.$stone; @include m.section-pad; }
+.service-grid {
+  display: grid; grid-template-columns: 1fr; gap: v.$space-3;
+  @include m.respond(sm) { grid-template-columns: repeat(2, 1fr); }
+  @include m.respond(lg) { grid-template-columns: repeat(3, 1fr); }
+}
+.service-card {
+  background: v.$white; border: 1px solid v.$stone-dim; border-radius: v.$radius; padding: v.$space-3;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+  &:hover { transform: translateY(-4px); border-color: v.$rhododendron; }
+  &__icon {
+    display: inline-block; font-family: v.$font-mono; font-size: 0.85rem; color: v.$rhododendron;
+    border: 1px solid rgba(184, 69, 47, 0.35); border-radius: 999px; padding: 0.3rem 0.7rem;
+    margin-bottom: v.$space-2;
+  }
+  h3 { font-size: 1.2rem; margin-bottom: 0.6rem; }
+  p { font-size: 0.92rem; }
+}
+
+// ---- CTA banner (discount) ---------------------------------------------
+@keyframes ring-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.08); opacity: 0.8; }
+}
+
+.cta-banner {
+  position: relative;
+  overflow: hidden;
+  background: v.$marigold;
+  color: v.$ink;
+  padding-block: v.$space-5;
+}
+.cta-banner__ring {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 3px solid rgba(16, 26, 34, 0.15);
+  animation: ring-pulse 4s ease-in-out infinite;
+
+  @media (max-width: 767px) { display: none; }
+}
+.cta-banner__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-3;
+  align-items: flex-start;
+
+  h2 { color: v.$ink; font-size: clamp(1.4rem, 3vw, 2rem); margin: 0.3rem 0 0.6rem; max-width: 22ch; }
+  p { max-width: 46ch; margin-bottom: v.$space-2; }
+
+  @include m.respond(md) { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+.cta-banner__badge {
+  font-family: v.$font-mono;
+  font-weight: 600;
+  font-size: 1.5rem;
+  background: v.$night-slate;
+  color: v.$marigold;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.btn-outline--dark {
+  border-color: rgba(16, 26, 34, 0.4);
+  color: v.$ink;
+  &:hover { border-color: v.$ink; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-banner__ring { animation: none; }
+}
+
+// ---- Pricing -------------------------------------------------------------
+.pricing { background: v.$night-slate; color: rgba(237, 231, 221, 0.85); padding-block: v.$space-5; }
+.pricing__grid {
+  display: grid; grid-template-columns: 1fr; gap: v.$space-3;
+  @include m.respond(md) { grid-template-columns: repeat(3, 1fr); }
+}
+.price-card {
+  position: relative; background: v.$night-slate-2; border: 1px solid rgba(143, 193, 217, 0.2);
+  border-radius: v.$radius; padding: v.$space-3; display: flex; flex-direction: column; gap: 0.7rem;
+  transition: transform 0.25s ease;
+  &:hover { transform: translateY(-4px); }
+
+  h3 { color: v.$stone; font-size: 1.2rem; }
+  &--featured { border-color: v.$marigold; background: #24374a; }
+  &__tag {
+    position: absolute; top: -12px; right: v.$space-3; background: v.$marigold; color: v.$ink;
+    font-family: v.$font-mono; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0.25rem 0.6rem; border-radius: 2px;
+  }
+  &__price { font-family: v.$font-mono; font-size: 1.5rem; color: v.$marigold; }
+  &__unit { font-size: 0.8rem; color: rgba(237, 231, 221, 0.6); margin-top: -0.5rem; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; font-size: 0.88rem; }
+  a { margin-top: 0.5rem; justify-content: center; }
+}

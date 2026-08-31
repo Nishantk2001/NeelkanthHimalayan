@@ -1,0 +1,87 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section-head {
+  max-width: 46ch; margin-bottom: v.$space-4;
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: 0.5rem; }
+}
+
+.contact-body { background: v.$stone; @include m.section-pad; }
+
+.office-status {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: v.$font-mono; font-size: 0.85rem;
+  background: v.$white; border: 1px solid v.$stone-dim; border-radius: 999px;
+  padding: 0.6rem 1.1rem; margin-bottom: v.$space-3;
+}
+.office-status__dot {
+  width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0;
+  &.is-open { background: #3D9A5C; box-shadow: 0 0 0 3px rgba(61, 154, 92, 0.2); }
+  &.is-closed { background: v.$rhododendron; box-shadow: 0 0 0 3px rgba(184, 69, 47, 0.18); }
+}
+
+.contact__quick {
+  display: grid; grid-template-columns: 1fr; gap: v.$space-2; margin-bottom: v.$space-4;
+  @include m.respond(sm) { grid-template-columns: repeat(3, 1fr); }
+}
+.quick-card {
+  background: v.$white; border: 1px solid v.$stone-dim; border-radius: v.$radius;
+  padding: v.$space-2 v.$space-3; display: flex; flex-direction: column; gap: 0.2rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  &:hover { border-color: v.$rhododendron; transform: translateY(-3px); }
+  &__label { font-family: v.$font-mono; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: v.$glacier-dim; }
+  &__value { font-size: 0.98rem; color: v.$ink; }
+}
+
+.contact__grid {
+  display: grid; grid-template-columns: 1fr; gap: v.$space-3;
+  @include m.respond(lg) { grid-template-columns: 1fr 1.2fr; }
+}
+.contact__map {
+  border-radius: v.$radius; overflow: hidden; border: 1px solid v.$stone-dim; min-height: 320px;
+  iframe { width: 100%; height: 100%; min-height: 320px; border: 0; display: block; }
+}
+.contact-form {
+  background: v.$white; border: 1px solid v.$stone-dim; border-radius: v.$radius; padding: v.$space-4;
+  display: grid; gap: v.$space-3;
+}
+.form-row {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  label { font-family: v.$font-mono; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: v.$pine; }
+  input, textarea {
+    font-family: v.$font-body; font-size: 0.95rem; padding: 0.75rem 0.9rem;
+    border: 1px solid v.$stone-dim; border-radius: v.$radius; background: v.$stone; color: v.$ink; resize: vertical;
+    &:focus { outline: none; border-color: v.$rhododendron; background: v.$white; }
+  }
+}
+.form-row--split {
+  display: grid; grid-template-columns: 1fr; gap: v.$space-3;
+  @include m.respond(sm) { grid-template-columns: 1fr 1fr; }
+  > div { display: flex; flex-direction: column; gap: 0.4rem; }
+}
+.form-error { font-size: 0.78rem; color: v.$rhododendron; }
+.form-success {
+  background: rgba(43, 61, 52, 0.08); border: 1px solid v.$pine; color: v.$pine;
+  font-size: 0.9rem; padding: 0.8rem 1rem; border-radius: v.$radius;
+}
+.contact-form button { justify-self: start; }
+
+// ---- FAQ -------------------------------------------------------------
+.faq { background: v.$white; @include m.section-pad; }
+.faq__list { max-width: 760px; display: grid; gap: 0.8rem; }
+.faq-item {
+  border: 1px solid v.$stone-dim; border-radius: v.$radius; background: v.$stone; overflow: hidden;
+}
+.faq-item__q {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  background: none; border: none; padding: 1rem 1.2rem; text-align: left;
+  font-family: v.$font-body; font-weight: 600; font-size: 0.98rem; color: v.$ink; cursor: pointer;
+}
+.faq-item__icon {
+  font-family: v.$font-mono; color: v.$rhododendron; font-size: 1.1rem; flex-shrink: 0; margin-left: 1rem;
+}
+.faq-item__a {
+  max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+  p { padding: 0 1.2rem 1.1rem; font-size: 0.92rem; color: v.$pine; max-width: 60ch; }
+}
+.faq-item.is-open .faq-item__a { max-height: 200px; }

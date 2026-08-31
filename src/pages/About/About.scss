@@ -1,0 +1,102 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section-head {
+  max-width: 46ch; margin-bottom: v.$space-4;
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: 0.5rem; }
+  &--dark h2 { color: v.$stone; }
+}
+
+// ---- Intro split ----------------------------------------------------------
+.about-intro { background: v.$stone; padding-block: v.$space-6 v.$space-5; }
+.about-intro__grid {
+  display: grid; grid-template-columns: 1fr; gap: v.$space-5;
+  @include m.respond(lg) { grid-template-columns: 1fr 1.1fr; align-items: center; }
+}
+
+.about-intro__media {
+  position: relative;
+  padding: 1.5rem 2rem 3rem 0;
+}
+.about-intro__img {
+  height: 380px;
+  border-radius: v.$radius;
+  background-size: cover;
+  background-position: center;
+}
+.about-intro__badge {
+  position: absolute;
+  background: v.$rhododendron;
+  color: v.$white;
+  font-family: v.$font-mono;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  padding: 0.9rem 1.1rem;
+  border-radius: v.$radius;
+  box-shadow: 0 12px 24px rgba(16, 26, 34, 0.18);
+
+  small { font-family: v.$font-body; font-size: 0.72rem; opacity: 0.85; }
+
+  &--top { top: 0; right: 0; }
+  &--bottom {
+    left: 0;
+    bottom: 0;
+    background: v.$pine;
+  }
+}
+
+.about-intro__content {
+  h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 0.6rem 0 1rem; max-width: 20ch; }
+}
+.about-intro__lede { max-width: 56ch; margin-bottom: v.$space-3; }
+.about-intro__checklist {
+  list-style: none; margin: 0 0 v.$space-3; padding: 0;
+  display: grid; gap: 0.6rem;
+  @include m.respond(sm) { grid-template-columns: 1fr 1fr; }
+
+  li {
+    font-size: 0.92rem;
+    span { color: v.$rhododendron; font-weight: 700; margin-right: 0.4rem; }
+  }
+}
+
+// ---- Values ------------------------------------------------------------
+.values { background: v.$white; @include m.section-pad; }
+.values__grid {
+  display: grid; grid-template-columns: 1fr; gap: v.$space-3;
+  @include m.respond(sm) { grid-template-columns: repeat(2, 1fr); }
+}
+.value-card {
+  background: v.$stone; border-left: 3px solid v.$rhododendron;
+  border-radius: 0 v.$radius v.$radius 0; padding: v.$space-3;
+  transition: transform 0.25s ease;
+  &:hover { transform: translateX(4px); }
+  h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+  p { font-size: 0.95rem; }
+}
+
+// ---- Timeline -----------------------------------------------------------
+.timeline-section { background: v.$night-slate; color: rgba(237, 231, 221, 0.85); padding-block: v.$space-5; }
+.timeline {
+  list-style: none; margin: 0; padding: 0; display: grid; gap: v.$space-3;
+  border-left: 1px solid rgba(143, 193, 217, 0.3);
+}
+.timeline li {
+  display: grid; grid-template-columns: 90px 1fr; gap: v.$space-2;
+  padding-left: v.$space-3; position: relative;
+  &::before {
+    content: ''; position: absolute; left: -5px; top: 6px; width: 9px; height: 9px;
+    border-radius: 50%; background: v.$marigold;
+  }
+  p { max-width: 60ch; font-size: 0.95rem; }
+}
+.timeline__year { font-family: v.$font-mono; color: v.$glacier; }
+
+// ---- CTA strip ----------------------------------------------------------
+.cta-strip { background: v.$rhododendron; color: v.$white; padding-block: v.$space-4; }
+.cta-strip__inner {
+  display: flex; flex-direction: column; gap: v.$space-3; align-items: flex-start;
+  h2 { color: v.$white; font-size: clamp(1.3rem, 3vw, 1.8rem); margin: 0.3rem 0; max-width: 30ch; }
+  @include m.respond(md) { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+.cta-strip .btn-solid { background: v.$night-slate; &:hover { background: v.$ink; } }
